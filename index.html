@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareBouquet | Catholic Care Page</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --soft: #f8f5ef;
+      --cream: #fffaf2;
+      --gold: #b8860b;
+      --blue: #1f4e79;
+      --green: #2f6f4e;
+      --rose: #7a2e3b;
+      --white: #ffffff;
+      --shadow: 0 16px 40px rgba(31, 41, 51, 0.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--cream), #ffffff 420px);
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--blue);
+    }
+
+    header {
+      padding: 22px 18px;
+      border-bottom: 1px solid rgba(184, 134, 11, 0.25);
+      background: rgba(255, 250, 242, 0.92);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 1.18rem;
+    }
+
+    .cross {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(184, 134, 11, 0.45);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      background: #fff;
+      font-size: 1.2rem;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 16px;
+      font-size: 0.95rem;
+    }
+
+    .navlinks a {
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 56px 18px 34px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      color: var(--gold);
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(2.15rem, 4vw, 4.2rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -0.035em;
+    }
+
+    .lead {
+      font-size: 1.2rem;
+      color: #374151;
+      max-width: 650px;
+      margin: 0 0 24px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    button, .button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    button:hover, .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 10px 18px rgba(31, 78, 121, 0.18);
+    }
+
+    .secondary {
+      background: white;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .hero-card {
+      background: white;
+      border: 1px solid rgba(184, 134, 11, 0.25);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+    }
+
+    .mini-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-stat {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fffdf8;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.65rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 18px 70px;
+    }
+
+    section {
+      margin-top: 38px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 620px;
+      font-family: Arial, sans-serif;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      min-height: 170px;
+    }
+
+    .feature .icon {
+      font-size: 1.65rem;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: #4b5563;
+      font-family: Arial, sans-serif;
+      font-size: 0.96rem;
+    }
+
+    .care-page {
+      background: white;
+      border: 1px solid rgba(31, 78, 121, 0.18);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .care-header {
+      padding: 30px;
+      background: linear-gradient(135deg, #f7efe0, #ffffff);
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 18px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .portrait {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid rgba(184, 134, 11, 0.35);
+      display: grid;
+      place-items: center;
+      font-size: 2.4rem;
+      color: var(--gold);
+    }
+
+    .care-header h2 {
+      margin: 0 0 5px;
+      font-size: 2rem;
+    }
+
+    .care-header p {
+      margin: 0;
+      color: #4b5563;
+      font-family: Arial, sans-serif;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 18px 24px 0;
+    }
+
+    .tab {
+      background: #f3f4f6;
+      color: #374151;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .tab.active {
+      background: var(--blue);
+      color: white;
+    }
+
+    .care-body {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      background: #fff;
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+    }
+
+    label {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #374151;
+      margin: 14px 0 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      padding: 12px 13px;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 88px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .entry {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 13px;
+      background: #fffdf8;
+      font-family: Arial, sans-serif;
+    }
+
+    .entry strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .entry small {
+      color: var(--muted);
+    }
+
+    .summary-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 14px;
+      font-family: Arial, sans-serif;
+    }
+
+    .summary-box h4 {
+      margin: 0 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.2rem;
+    }
+
+    .totals {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .total {
+      border-radius: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .total b {
+      display: block;
+      font-size: 1.55rem;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    .total span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .meal-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 10px;
+      font-family: Arial, sans-serif;
+    }
+
+    .meal-item button {
+      padding: 9px 12px;
+      font-size: 0.84rem;
+      background: var(--green);
+      color: white;
+      white-space: nowrap;
+    }
+
+    .print-card {
+      background: #fffaf2;
+      border: 1px solid rgba(184, 134, 11, 0.32);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .print-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.7rem;
+    }
+
+    .print-card p {
+      margin: 8px 0;
+      color: #374151;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 28px 18px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero, .care-body {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .navlinks {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .care-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .portrait {
+        margin: 0 auto;
+      }
+
+      .form-row, .totals, .mini-stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      header, .hero, .features-section, .tabs, .panel form, .meal-help, footer, .actions, .no-print {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+      }
+
+      main {
+        padding: 0;
+      }
+
+      .care-page {
+        box-shadow: none;
+        border: none;
+      }
+
+      .care-body {
+        display: block;
+        padding: 0;
+      }
+
+      .panel {
+        border: none;
+      }
+
+      .print-card {
+        border: 2px solid #b8860b;
+        margin: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand"><span class="cross">✚</span> CareBouquet</div>
+      <div class="navlinks">
+        <a href="#spiritual-bouquet">Spiritual Bouquet</a>
+        <a href="#meals">Meals & Help</a>
+        <a href="#print">Printable Card</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Catholic care in one private place</div>
+      <h1>Organize Masses, prayers, meals, and support for someone you love.</h1>
+      <p class="lead">CareBouquet gives families a simple page where friends can offer a Mass, Rosary, Holy Hour, novena, meal, errand, or message of encouragement.</p>
+      <div class="actions">
+        <a class="button primary" href="#spiritual-bouquet">Offer a prayer</a>
+        <a class="button secondary" href="#meals">Help with a meal</a>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <h2 class="card-title">Sample care page</h2>
+      <p>This prototype shows how a private care page could work for a family, parish group, school, or circle of friends.</p>
+      <div class="mini-stat-grid">
+        <div class="mini-stat"><strong id="heroPrayerCount">7</strong><span>Spiritual offerings</span></div>
+        <div class="mini-stat"><strong id="heroMealCount">3</strong><span>Meals or helps</span></div>
+        <div class="mini-stat"><strong>1</strong><span>Printable bouquet</span></div>
+        <div class="mini-stat"><strong>Private</strong><span>Shared by link</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <main>
+    <section class="features-section">
+      <div class="section-heading">
+        <h2>What this replaces</h2>
+        <p>Instead of scattered texts, Mass cards, meal signups, and prayer promises, everything lives on one page.</p>
+      </div>
+      <div class="grid-3">
+        <div class="feature">
+          <div class="icon">🕊️</div>
+          <h3>Spiritual Bouquet</h3>
+          <p>Friends can offer Masses, Rosaries, Chaplets, fasting, Holy Hours, novenas, or daily prayers.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🍲</div>
+          <h3>Meals and practical help</h3>
+          <p>Supporters can sign up for meals, rides, errands, groceries, childcare, visits, or gift cards.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">✉️</div>
+          <h3>Family encouragement</h3>
+          <p>The family can receive a printable summary showing the prayers and sacrifices offered for them.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="care-page" aria-label="Sample care page">
+      <div class="care-header">
+        <div class="portrait">M</div>
+        <div>
+          <h2>Prayers and support for Mary Catherine</h2>
+          <p>Created by her family. Thank you for surrounding her with prayer, meals, and concrete help.</p>
+        </div>
+      </div>
+
+      <div class="tabs no-print">
+        <span class="tab active">Spiritual Bouquet</span>
+        <span class="tab">Meals</span>
+        <span class="tab">Messages</span>
+        <span class="tab">Printable Card</span>
+      </div>
+
+      <div class="care-body">
+        <div>
+          <div class="panel" id="spiritual-bouquet">
+            <h3>Offer a spiritual gift</h3>
+            <p style="font-family: Arial, sans-serif; color: var(--muted); margin-top: 0;">Choose what you will offer for Mary Catherine. In the real version, this would save privately and notify the family.</p>
+
+            <form id="prayerForm">
+              <div class="form-row">
+                <div>
+                  <label for="giverName">Your name</label>
+                  <input id="giverName" name="giverName" placeholder="Jane Smith" required />
+                </div>
+                <div>
+                  <label for="offeringType">I will offer</label>
+                  <select id="offeringType" name="offeringType" required>
+                    <option value="Mass intention">Mass intention</option>
+                    <option value="Rosary">Rosary</option>
+                    <option value="Divine Mercy Chaplet">Divine Mercy Chaplet</option>
+                    <option value="Holy Hour">Holy Hour</option>
+                    <option value="Novena">Novena</option>
+                    <option value="Day of fasting">Day of fasting</option>
+                    <option value="My suffering today">My suffering today</option>
+                    <option value="Daily prayer">Daily prayer</option>
+                    <option value="Other spiritual offering">Other spiritual offering</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="offeringDate">Date</label>
+                  <input id="offeringDate" name="offeringDate" type="date" />
+                </div>
+                <div>
+                  <label for="visibility">Visibility</label>
+                  <select id="visibility" name="visibility">
+                    <option value="Visible to family and friends">Visible to family and friends</option>
+                    <option value="Visible to family only">Visible to family only</option>
+                    <option value="Private offering">Private offering</option>
+                  </select>
+                </div>
+                <div class="full-width">
+                  <label for="message">Optional message</label>
+                  <textarea id="message" name="message" placeholder="We are praying for peace, healing, and strength."></textarea>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="primary" type="submit">Add to spiritual bouquet</button>
+              </div>
+            </form>
+
+            <div class="list" id="prayerList" aria-live="polite"></div>
+          </div>
+
+          <div class="panel meal-help" id="meals" style="margin-top: 18px;">
+            <h3>Meals and practical help</h3>
+            <p style="font-family: Arial, sans-serif; color: var(--muted); margin-top: 0;">These are sample needs. In the real version, supporters would claim an open slot.</p>
+
+            <div class="meal-item">
+              <div><strong>Tuesday dinner</strong><br><span>Chicken, pasta, salad, or easy family meal</span></div>
+              <button type="button" onclick="claimHelp(this, 'Tuesday dinner')">Claim</button>
+            </div>
+            <div class="meal-item">
+              <div><strong>Thursday grocery run</strong><br><span>Pick up basic groceries or pharmacy items</span></div>
+              <button type="button" onclick="claimHelp(this, 'Thursday grocery run')">Claim</button>
+            </div>
+            <div class="meal-item">
+              <div><strong>Saturday ride</strong><br><span>Ride to appointment or parish event</span></div>
+              <button type="button" onclick="claimHelp(this, 'Saturday ride')">Claim</button>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="summary-box">
+            <h4>Spiritual Bouquet Totals</h4>
+            <div class="totals">
+              <div class="total"><b id="totalOfferings">7</b><span>Total offerings</span></div>
+              <div class="total"><b id="totalMasses">2</b><span>Masses</span></div>
+              <div class="total"><b id="totalRosaries">3</b><span>Rosaries</span></div>
+              <div class="total"><b id="totalHelps">3</b><span>Meals/help</span></div>
+            </div>
+          </div>
+
+          <div class="print-card" id="print">
+            <h3>Spiritual Bouquet</h3>
+            <p>For Mary Catherine</p>
+            <p>With love, your family and friends have offered prayers, Masses, sacrifices, and acts of service for your healing and peace.</p>
+            <p><strong id="printTotal">7</strong> spiritual offerings have been added.</p>
+            <div class="actions" style="justify-content: center;">
+              <button class="secondary no-print" type="button" onclick="window.print()">Print bouquet card</button>
+            </div>
+          </div>
+
+          <div class="summary-box" style="margin-top: 14px;">
+            <h4>Future paid features</h4>
+            <p style="margin-bottom: 0;">Private pages, text/email reminders, printable Mass card, parish group pages, calendar sync, donation links, and family updates.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    CareBouquet prototype. Built as a first-version concept for Catholic spiritual and practical care coordination.
+  </footer>
+
+  <script>
+    const prayers = [
+      { name: "Anne", type: "Rosary", date: "Today", message: "Praying for peace and healing." },
+      { name: "Michael", type: "Mass intention", date: "Sunday", message: "Mass offered for Mary Catherine and her family." },
+      { name: "Susan", type: "Divine Mercy Chaplet", date: "Today", message: "Jesus, I trust in You." },
+      { name: "Beth", type: "Holy Hour", date: "Friday", message: "Offering an hour of adoration." },
+      { name: "Tom", type: "Rosary", date: "Wednesday", message: "Praying the Sorrowful Mysteries." },
+      { name: "Catherine", type: "Mass intention", date: "Monday", message: "Mass offered at St. Joseph." },
+      { name: "Patricia", type: "Rosary", date: "Thursday", message: "Praying for strength." }
+    ];
+
+    let helpCount = 3;
+
+    const prayerForm = document.getElementById("prayerForm");
+    const prayerList = document.getElementById("prayerList");
+
+    function formatDate(value) {
+      if (!value) return "Date not listed";
+      const date = new Date(value + "T00:00:00");
+      return date.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+    }
+
+    function renderPrayers() {
+      prayerList.innerHTML = "";
+      prayers.slice().reverse().forEach((item) => {
+        const div = document.createElement("div");
+        div.className = "entry";
+        div.innerHTML = `<strong>${escapeHtml(item.name)} offered: ${escapeHtml(item.type)}</strong><small>${escapeHtml(item.date)} · ${escapeHtml(item.message || "No message added.")}</small>`;
+        prayerList.appendChild(div);
+      });
+
+      const total = prayers.length;
+      const masses = prayers.filter(p => p.type === "Mass intention").length;
+      const rosaries = prayers.filter(p => p.type === "Rosary").length;
+
+      document.getElementById("totalOfferings").textContent = total;
+      document.getElementById("heroPrayerCount").textContent = total;
+      document.getElementById("printTotal").textContent = total;
+      document.getElementById("totalMasses").textContent = masses;
+      document.getElementById("totalRosaries").textContent = rosaries;
+      document.getElementById("totalHelps").textContent = helpCount;
+      document.getElementById("heroMealCount").textContent = helpCount;
+    }
+
+    function claimHelp(button, label) {
+      if (button.dataset.claimed === "true") return;
+      button.textContent = "Claimed";
+      button.dataset.claimed = "true";
+      button.style.background = "#6b7280";
+      helpCount += 1;
+      document.getElementById("totalHelps").textContent = helpCount;
+      document.getElementById("heroMealCount").textContent = helpCount;
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    prayerForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const formData = new FormData(prayerForm);
+      const entry = {
+        name: formData.get("giverName").trim(),
+        type: formData.get("offeringType"),
+        date: formatDate(formData.get("offeringDate")),
+        message: formData.get("message").trim() || formData.get("visibility")
+      };
+
+      prayers.push(entry);
+      prayerForm.reset();
+      renderPrayers();
+    });
+
+    renderPrayers();
+  </script>
+</body>
+</html>
